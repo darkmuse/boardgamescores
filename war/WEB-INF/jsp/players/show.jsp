@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<h2>Player Information</h2>
+<h2>Player Information<c:if test="${empty player.username}"><span id="firstName.errors" class="errors"> Not Found</span></c:if></h2>
 
   <table>
     <tr>

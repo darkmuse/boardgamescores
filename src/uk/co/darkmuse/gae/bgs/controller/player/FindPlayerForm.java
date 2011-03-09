@@ -32,6 +32,7 @@ public class FindPlayerForm {
 	@RequestMapping(value="/players/{username}", method = RequestMethod.GET)
 	public String ownerHandler(@PathVariable("username") String username, Model model) {
 		Player player = playerDAO.getPlayer(username);
+		if (player != null)
 		model.addAttribute(player);
 		return "players/show";
 	}

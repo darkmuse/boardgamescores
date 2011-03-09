@@ -11,7 +11,9 @@ public class Player {
 	private float weightedWins;
 	private long rating;
 
-	public Player() {};
+	public Player() {
+		this.rating = 1600;
+	};
 	public Player(String username, long rating) {
 		super();
 		this.username = username;

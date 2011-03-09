@@ -35,15 +35,13 @@ public class EditPlayerForm {
 	public String setupForm(@PathVariable("username") String username, Model model) {
 		Player player = playerDAO.getPlayer(username);
 		if (player == null) {
-			model.addAttribute(new Player());
-			return "redirect:/players/new" ;
-		} else {
-			model.addAttribute(player);
-			return "players/form";
+			player = new Player(username, 1600);
 		}
+		model.addAttribute(player);
+		return "players/form";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.POST})
 	public String processPut(@ModelAttribute Player player, BindingResult result, SessionStatus status) {
 		new PlayerValidator().validate(player, result);
 		if (result.hasErrors()) {
