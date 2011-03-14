@@ -20,7 +20,7 @@ import uk.co.darkmuse.gae.bgs.validation.PlayerValidator;
  * @author Gary Barker
  */
 @Controller
-@RequestMapping(value="/players/{username}/edit")
+@RequestMapping(value="/players/{username}")
 //@SessionAttributes(types = Player.class)
 public class EditPlayerForm {
 	
@@ -31,7 +31,7 @@ public class EditPlayerForm {
 		this.playerDAO = playerDAO;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/edit", method = RequestMethod.GET)
 	public String setupForm(@PathVariable("username") String username, Model model) {
 		Player player = playerDAO.getPlayer(username);
 		if (player == null) {
@@ -41,8 +41,21 @@ public class EditPlayerForm {
 		return "players/form";
 	}
 
-	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.POST})
+	@RequestMapping(method = RequestMethod.PUT)
 	public String processPut(@ModelAttribute Player player, BindingResult result, SessionStatus status) {
+		new PlayerValidator().validate(player, result);
+		if (result.hasErrors()) {
+			return "players/form";
+		}
+		else {
+			playerDAO.addPlayer(player);
+			status.setComplete();
+			return "redirect:/players/" + player.getUsername();
+		}
+	}
+	
+	@RequestMapping(value="/edit", method = RequestMethod.POST)
+	public String processPost(@ModelAttribute Player player, BindingResult result, SessionStatus status) {
 		new PlayerValidator().validate(player, result);
 		if (result.hasErrors()) {
 			return "players/form";
