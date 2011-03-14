@@ -11,7 +11,7 @@
       <th>
         Last Name: <form:errors path="*" cssClass="errors"/>
         <br/> 
-        <form:input path="firstName" size="30" maxlength="80" />
+        <form:input path="realName" size="30" maxlength="80" />
       </th>
     </tr>
     <tr>

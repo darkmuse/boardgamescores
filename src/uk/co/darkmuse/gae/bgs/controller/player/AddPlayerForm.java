@@ -14,7 +14,7 @@ import uk.co.darkmuse.gae.bgs.model.PlayerDAO;
 import uk.co.darkmuse.gae.bgs.validation.PlayerValidator;
 
 /**
- * JavaBean Form controller that is used to edit an existing <code>Owner</code>.
+ * JavaBean Form controller that is used to add a new <code>Player</code>.
  * 
  * @author Gary Barker
  */

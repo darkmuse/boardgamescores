@@ -6,7 +6,8 @@
 	<c:forEach var="person" items="${selections}">
 		<tr>
 			<td>${person.username}</td>
-			<td>${person.rating}</td>
+			<td>${person.realName}</td>
+			<td>${person.wins}</td>
 		</tr>
 	</c:forEach>
 </table>

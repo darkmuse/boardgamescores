@@ -15,13 +15,12 @@ import uk.co.darkmuse.gae.bgs.model.PlayerDAO;
 import uk.co.darkmuse.gae.bgs.validation.PlayerValidator;
 
 /**
- * JavaBean Form controller that is used to edit an existing <code>Owner</code>.
+ * JavaBean Form controller that is used to edit an existing <code>Player</code>.
  * 
  * @author Gary Barker
  */
 @Controller
 @RequestMapping(value="/players/{username}/edit")
-//@SessionAttributes(types = Player.class)
 public class EditPlayerForm {
 	
 	private final PlayerDAO playerDAO;
@@ -35,7 +34,7 @@ public class EditPlayerForm {
 	public String setupForm(@PathVariable("username") String username, Model model) {
 		Player player = playerDAO.getPlayer(username);
 		if (player == null) {
-			player = new Player(username, 1600);
+			player = new Player(username, 0);
 		}
 		model.addAttribute(player);
 		return "players/form";

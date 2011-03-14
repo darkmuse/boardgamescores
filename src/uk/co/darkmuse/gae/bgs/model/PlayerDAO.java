@@ -11,17 +11,17 @@ public class PlayerDAO extends DAOBase {
   }
 	
 	public List<Player> getPlayers() {
-		List<Player> playerList = ofy().query(Player.class).list();//order("rating");
+		List<Player> playerList = ofy().query(Player.class).list();
 		return playerList;
 	}
 	
-	public List<Player> findPlayers(String firstName) {
-		List<Player> playerList = ofy().query(Player.class).filter("firstName =", firstName).list();//order("rating");
+	public List<Player> findPlayers(String realName) {
+		List<Player> playerList = ofy().query(Player.class).filter("realName =", realName).list();
 		return playerList;
 	}
 	
-	public void addPlayer(String username, long rating) {
-		Player newPlayer = new Player(username, rating);
+	public void addPlayer(String username, long wins) {
+		Player newPlayer = new Player(username, wins);
 		addPlayer(newPlayer);
 	}
 	
@@ -30,7 +30,7 @@ public class PlayerDAO extends DAOBase {
 	}
 	
 	public void addPlayer(String username) {
-		addPlayer(username, 1600);
+		addPlayer(username, 0);
 	}
 
 	public Player getPlayer(String username) {

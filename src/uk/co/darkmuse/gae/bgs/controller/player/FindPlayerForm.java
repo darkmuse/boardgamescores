@@ -48,11 +48,11 @@ public class FindPlayerForm {
 
 		// allow parameterless GET request for /owners to return all records
 		Collection<Player> results;
-		if (player.getFirstName() == null) {
+		if (player.getRealName() == null) {
 			results = playerDAO.getPlayers();
 		} else {
-			// find owners by last name
-			results = playerDAO.findPlayers(player.getFirstName());
+			// find owners by real name
+			results = playerDAO.findPlayers(player.getRealName());
 		}
 		
 		if (results.size() < 1) {

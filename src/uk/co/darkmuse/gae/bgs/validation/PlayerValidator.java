@@ -7,18 +7,14 @@ import uk.co.darkmuse.gae.bgs.model.Player;
 
 public class PlayerValidator {
 	public void validate(Player player, Errors errors) {
-		if (!StringUtils.hasLength(player.getFirstName())) {
+		if (!StringUtils.hasLength(player.getRealName())) {
 			errors.rejectValue("firstName", "required", "required");
-		}
-		if (!StringUtils.hasLength(player.getLastName())) {
-			errors.rejectValue("lastName", "required", "required");
 		}
 		if (!StringUtils.hasLength(player.getUsername())) {
 			errors.rejectValue("username", "required", "required");
 		}
-		
-		Long rating = player.getRating();
-		if (rating < 0 || rating > 5000) {
+		Long wins = player.getWins();
+		if (wins < 0) {
 			errors.rejectValue("rating", "out-of-range", "out-of-range");
 		}
 	}

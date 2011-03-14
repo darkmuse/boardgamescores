@@ -7,7 +7,7 @@
   <table>
     <tr>
       <th>Name</th>
-      <td><b>${player.firstName} ${player.lastName}</b></td>
+      <td><b>${player.realName}</b></td>
     </tr>
     <tr>
       <th>Username</th>
@@ -16,14 +16,6 @@
     <tr>
       <th>Wins</th>
       <td>${player.wins}</td>
-    </tr>
-    <tr>
-      <th>Weighted </th>
-      <td>${player.weightedWins}</td>
-    </tr>
-    <tr>
-      <th>Rating </th>
-      <td>${player.rating}</td>
     </tr>
   </table>
  
@@ -34,12 +26,6 @@
         	<spring:param name="username" value="${player.username}" />
         </spring:url>
         <a href="${fn:escapeXml(editUrl)}">Edit Player</a>
-      </td>
-      <td>
-        <spring:url value="{ownerId}/pets/new" var="addUrl">
-        	<spring:param name="ownerId" value="${owner.id}" />
-        </spring:url>
-        <a href="${fn:escapeXml(addUrl)}">Add New Pet</a>
       </td>
     </tr>
   </table>
